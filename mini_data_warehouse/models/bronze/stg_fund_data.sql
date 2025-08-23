@@ -5,4 +5,4 @@ select
   try_to_number(transaction_amount) as transaction_amount,
   try_to_number(fund_size) as fund_size_latest,
   transaction_index
-from {{ source('raw', 'fund_data') }};
+from {{ source('bronze', 'seed__fund_data') }}

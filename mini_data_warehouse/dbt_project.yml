@@ -33,7 +33,32 @@ models:
     # Config indicated by + and applies to all files under models/example/
     bronze:
       +materialized: view
+      +schema: FUNDS
     silver:
       +materialized: view
     gold:
       +materialized: table
+
+seeds:
+  mini_data_warehouse:
+    +schema: SEEDS
+  
+    seed__fund_data:
+      +column_types:
+        fund_name: TEXT
+        fund_size: NUMBER
+        transaction_type: TEXT
+        transaction_index: NUMBER
+        transaction_date: TEXT
+        transaction_amount: NUMBER
+        sector: TEXT
+        country: TEXT
+        region: TEXT
+
+    seed__company_data:
+      +column_types:
+        fund_name: TEXT
+        company_id: TEXT
+        company_name: TEXT
+        valuation_date: DATE
+        valuation_amount: NUMBER
