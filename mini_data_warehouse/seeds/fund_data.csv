@@ -1,0 +1,23 @@
+fund_name, fund_size ,transaction_type,transaction_index,transaction_date, transaction_amount ,sector,country,region
+Palisade Ridge Capital," 970,000,000 ",Commitment,1,31/12/2020," 9,700,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Valuation,1,31/12/2020," 8,000,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Valuation,2,31/12/2020," 8,500,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Valuation,1,31/03/2021," 9,000,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Valuation,1.000021,30/06/2021," 9,800,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Valuation,1,30/06/2021," 9,500,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Call,1,15/07/2021," 1,000,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Distribution,1,11/08/2021,"-300,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Valuation,1,30/09/2021," 11,000,000.00 ",Venture Capital,United States,North America
+Palisade Ridge Capital," 970,000,000 ",Valuation,1,31/12/2021," 12,000,000.00 ",Venture Capital,United States,North America
+Ironbrook Capital Partners," 50,000,000 ",Commitment,1,31/12/2020," 50,000,000.00 ",Private Equity,Sweden,Europe
+Ironbrook Capital Partners," 50,000,000 ",Valuation,1,31/12/2020," 50,000,000.00 ",Private Equity,Sweden,Europe
+Ironbrook Capital Partners," 50,000,000 ",Valuation,1,30/06/2021," 70,000,000.00 ",Private Equity,Sweden,Europe
+Ironbrook Capital Partners," 50,000,000 ",Valuation,1,31/12/2021," 71,000,000.00 ",Private Equity,Sweden,Europe
+Summitvale Equity Group," 250,000,000 ",Commitment,1,31/12/2020," 12,500,000.00 ",Private Equity,USA,North America
+Summitvale Equity Group," 250,000,000 ",Valuation,1,31/12/2020," 10,000,000.00 ",Private Equity,USA,North America
+Summitvale Equity Group," 250,000,000 ",Valuation,1,31/03/2021," 11,000,000.00 ",Private Equity,USA,North America
+Summitvale Equity Group," 250,000,000 ",Valuation,1,30/06/2021," 12,000,000.00 ",Private Equity,USA,North America
+Summitvale Equity Group," 250,000,000 ",Distribution,1,01/07/2021,"-1,000,000.00 ",Private Equity,USA,North America
+Summitvale Equity Group," 250,000,000 ",Valuation,1,30/09/2021," 12,000,000.00 ",Private Equity,USA,North America
+Summitvale Equity Group," 250,000,000 ",Valuation,1,31/12/2021," 12,500,000.00 ",Private Equity,USA,North America
+Summitvale Equity Group," 250,000,000 ",Valuation,7,31/12/2021," 13,000,000.00 ",Private Equity,USA,North America

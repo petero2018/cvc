@@ -1,0 +1,198 @@
+[0m19:52:45.564445 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024C7767D370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024C7767D760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024C7767D520>]}
+
+
+============================== 19:52:45.667979 | ff6e891d-22eb-4d4d-aa05-d29a4bb78c82 ==============================
+[0m19:52:45.667979 [info ] [MainThread]: Running with dbt=1.10.9
+[0m19:52:45.667979 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'version_check': 'True', 'invocation_command': 'dbt init', 'log_format': 'default', 'warn_error': 'None', 'introspect': 'True', 'debug': 'False', 'log_cache_events': 'False', 'fail_fast': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'quiet': 'False', 'empty': 'None', 'printer_width': '80', 'indirect_selection': 'eager', 'log_path': 'logs', 'profiles_dir': 'C:\\Users\\oszto\\.dbt', 'static_parser': 'True', 'write_json': 'True'}
+[0m19:53:27.071367 [debug] [MainThread]: Starter project path: C:\Users\oszto\AppData\Local\pypoetry\Cache\virtualenvs\cvc-GXMGQpjH-py3.12\Lib\site-packages\dbt\include\starter_project
+[0m19:53:27.094840 [info ] [MainThread]: 
+Your new dbt project "mini_data_warehouse" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m19:53:27.094840 [info ] [MainThread]: Setting up your profile.
+[0m19:53:27.099338 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No adapters available. Learn how to install an adapter by going to https://docs.getdbt.com/docs/connect-adapters#install-using-the-cli
+[0m19:53:27.100340 [debug] [MainThread]: Command `dbt init` failed at 19:53:27.100340 after 41.67 seconds
+[0m19:53:27.100340 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024C772A81D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024C7719D760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024C7767C050>]}
+[0m19:53:27.100340 [debug] [MainThread]: Flushing usage events
+[0m19:53:27.841865 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:16:46.636425 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A5FFB498B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A5823CF680>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A5823CDAF0>]}
+
+
+============================== 22:16:46.653092 | 7eb7df43-1776-42d7-9e14-adad98ef94ad ==============================
+[0m22:16:46.653092 [info ] [MainThread]: Running with dbt=1.10.9
+[0m22:16:46.653092 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'log_format': 'default', 'warn_error': 'None', 'introspect': 'True', 'debug': 'False', 'log_cache_events': 'False', 'fail_fast': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'printer_width': '80', 'log_path': 'logs', 'indirect_selection': 'eager', 'profiles_dir': 'C:\\Users\\oszto\\.dbt', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m22:16:46.702184 [info ] [MainThread]: dbt version: 1.10.9
+[0m22:16:46.703192 [info ] [MainThread]: python version: 3.12.0
+[0m22:16:46.703192 [info ] [MainThread]: python path: C:\Users\oszto\AppData\Local\pypoetry\Cache\virtualenvs\cvc-GXMGQpjH-py3.12\Scripts\python.exe
+[0m22:16:46.704358 [info ] [MainThread]: os info: Windows-11-10.0.26100-SP0
+[0m22:16:46.709367 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:16:46.712362 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:16:46.715882 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:16:46.715882 [info ] [MainThread]: Using profiles dir at C:\Users\oszto\.dbt
+[0m22:16:46.716887 [info ] [MainThread]: Using profiles.yml file at C:\Users\oszto\.dbt\profiles.yml
+[0m22:16:46.716887 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\oszto\PycharmProjects\cvc\dbt_project.yml
+[0m22:16:46.716887 [info ] [MainThread]: Configuration:
+[0m22:16:46.716887 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m22:16:46.718950 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m22:16:46.718950 [info ] [MainThread]: Required dependencies:
+[0m22:16:46.718950 [debug] [MainThread]: Executing "git --help"
+[0m22:16:46.743384 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m22:16:46.743384 [debug] [MainThread]: STDERR: "b''"
+[0m22:16:46.743384 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m22:16:46.743384 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m22:16:46.743384 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m22:16:46.743384 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "my_dbt_airbyte", target "dev" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+Runtime Error
+  Credentials in profile "legl_data_transform", target "dev" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+Runtime Error
+  Credentials in profile "mini_data_warehouse", target "prod" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+
+[0m22:16:46.743384 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\oszto\PycharmProjects\cvc\dbt_project.yml> not found
+
+[0m22:16:46.743384 [debug] [MainThread]: Command `dbt debug` failed at 22:16:46.743384 after 0.23 seconds
+[0m22:16:46.743384 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A5826914F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A5827A9190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A5827A8380>]}
+[0m22:16:46.743384 [debug] [MainThread]: Flushing usage events
+[0m22:16:47.503424 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:18:40.495563 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017E959EFB00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017E933159A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017E93D7B770>]}
+
+
+============================== 22:18:40.495563 | 8e84ad04-6f98-4059-9cb8-3e3d83628119 ==============================
+[0m22:18:40.495563 [info ] [MainThread]: Running with dbt=1.10.9
+[0m22:18:40.495563 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'cache_selected_only': 'False', 'target_path': 'None', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'log_format': 'default', 'version_check': 'True', 'introspect': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_cache_events': 'False', 'use_experimental_parser': 'False', 'log_path': 'logs', 'indirect_selection': 'eager', 'profiles_dir': 'C:\\Users\\oszto\\.dbt', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True'}
+[0m22:18:40.513828 [info ] [MainThread]: dbt version: 1.10.9
+[0m22:18:40.515230 [info ] [MainThread]: python version: 3.12.0
+[0m22:18:40.515230 [info ] [MainThread]: python path: C:\Users\oszto\AppData\Local\pypoetry\Cache\virtualenvs\cvc-GXMGQpjH-py3.12\Scripts\python.exe
+[0m22:18:40.515230 [info ] [MainThread]: os info: Windows-11-10.0.26100-SP0
+[0m22:18:40.521280 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:18:40.524671 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:18:40.527671 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:18:40.527671 [info ] [MainThread]: Using profiles dir at C:\Users\oszto\.dbt
+[0m22:18:40.527671 [info ] [MainThread]: Using profiles.yml file at C:\Users\oszto\.dbt\profiles.yml
+[0m22:18:40.528869 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\oszto\PycharmProjects\cvc\dbt_project.yml
+[0m22:18:40.528869 [info ] [MainThread]: Configuration:
+[0m22:18:40.528869 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m22:18:40.530086 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m22:18:40.530086 [info ] [MainThread]: Required dependencies:
+[0m22:18:40.530086 [debug] [MainThread]: Executing "git --help"
+[0m22:18:40.558758 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m22:18:40.559758 [debug] [MainThread]: STDERR: "b''"
+[0m22:18:40.559758 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m22:18:40.560766 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m22:18:40.560766 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m22:18:40.560766 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "my_dbt_airbyte", target "dev" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+Runtime Error
+  Credentials in profile "legl_data_transform", target "dev" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+Runtime Error
+  Credentials in profile "mini_data_warehouse", target "prod" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+
+[0m22:18:40.561766 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\oszto\PycharmProjects\cvc\dbt_project.yml> not found
+
+[0m22:18:40.561766 [debug] [MainThread]: Command `dbt debug` failed at 22:18:40.561766 after 0.20 seconds
+[0m22:18:40.563220 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017E959EFB00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017E965A1A00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017E95D5B830>]}
+[0m22:18:40.563220 [debug] [MainThread]: Flushing usage events
+[0m22:18:41.236964 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:19:52.769650 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CCDC939340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CCD8E0EAE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CCDC938AD0>]}
+
+
+============================== 22:19:52.769650 | b6ca2da4-0915-4789-8a22-c6198a9e96c9 ==============================
+[0m22:19:52.769650 [info ] [MainThread]: Running with dbt=1.10.9
+[0m22:19:52.769650 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'version_check': 'True', 'invocation_command': 'dbt debug', 'log_format': 'default', 'warn_error': 'None', 'introspect': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'log_path': 'logs', 'indirect_selection': 'eager', 'write_json': 'True', 'static_parser': 'True', 'profiles_dir': 'C:\\Users\\oszto\\.dbt'}
+[0m22:19:52.786462 [info ] [MainThread]: dbt version: 1.10.9
+[0m22:19:52.786462 [info ] [MainThread]: python version: 3.12.0
+[0m22:19:52.786462 [info ] [MainThread]: python path: C:\Users\oszto\AppData\Local\pypoetry\Cache\virtualenvs\cvc-GXMGQpjH-py3.12\Scripts\python.exe
+[0m22:19:52.793495 [info ] [MainThread]: os info: Windows-11-10.0.26100-SP0
+[0m22:19:52.798861 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:19:52.801103 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:19:52.804185 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m22:19:52.804185 [info ] [MainThread]: Using profiles dir at C:\Users\oszto\.dbt
+[0m22:19:52.805195 [info ] [MainThread]: Using profiles.yml file at C:\Users\oszto\.dbt\profiles.yml
+[0m22:19:52.805709 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\oszto\PycharmProjects\cvc\dbt_project.yml
+[0m22:19:52.805709 [info ] [MainThread]: Configuration:
+[0m22:19:52.805709 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m22:19:52.805709 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m22:19:52.805709 [info ] [MainThread]: Required dependencies:
+[0m22:19:52.808233 [debug] [MainThread]: Executing "git --help"
+[0m22:19:52.828468 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m22:19:52.828468 [debug] [MainThread]: STDERR: "b''"
+[0m22:19:52.836691 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m22:19:52.836691 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m22:19:52.837861 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m22:19:52.837861 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "my_dbt_airbyte", target "dev" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+Runtime Error
+  Credentials in profile "legl_data_transform", target "dev" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+Runtime Error
+  Credentials in profile "mini_data_warehouse", target "prod" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+
+[0m22:19:52.837861 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\oszto\PycharmProjects\cvc\dbt_project.yml> not found
+
+[0m22:19:52.839465 [debug] [MainThread]: Command `dbt debug` failed at 22:19:52.839465 after 0.19 seconds
+[0m22:19:52.839465 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CCDC294620>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CCDC297BC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CCDC294590>]}
+[0m22:19:52.839465 [debug] [MainThread]: Flushing usage events
+[0m22:19:53.536941 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:20:22.254269 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A61866B40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A61864EF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A60C86300>]}
+
+
+============================== 22:20:22.254269 | fd3b3995-0c2a-48c7-956e-c8431282fcc0 ==============================
+[0m22:20:22.254269 [info ] [MainThread]: Running with dbt=1.10.9
+[0m22:20:22.254269 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'cache_selected_only': 'False', 'target_path': 'None', 'version_check': 'True', 'invocation_command': 'dbt debug', 'log_format': 'default', 'use_colors': 'True', 'introspect': 'True', 'debug': 'False', 'log_cache_events': 'False', 'fail_fast': 'False', 'no_print': 'None', 'empty': 'None', 'quiet': 'False', 'use_experimental_parser': 'False', 'printer_width': '80', 'indirect_selection': 'eager', 'log_path': 'logs', 'profiles_dir': 'C:\\Users\\oszto\\.dbt', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True'}
+[0m22:20:22.270053 [info ] [MainThread]: dbt version: 1.10.9
+[0m22:20:22.270053 [info ] [MainThread]: python version: 3.12.0
+[0m22:20:22.270053 [info ] [MainThread]: python path: C:\Users\oszto\AppData\Local\pypoetry\Cache\virtualenvs\cvc-GXMGQpjH-py3.12\Scripts\python.exe
+[0m22:20:22.275720 [info ] [MainThread]: os info: Windows-11-10.0.26100-SP0
+[0m22:20:26.571276 [info ] [MainThread]: Using profiles dir at C:\Users\oszto\.dbt
+[0m22:20:26.571276 [info ] [MainThread]: Using profiles.yml file at C:\Users\oszto\.dbt\profiles.yml
+[0m22:20:26.571276 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\oszto\PycharmProjects\cvc\dbt_project.yml
+[0m22:20:26.571276 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m22:20:26.571276 [debug] [MainThread]: Command `dbt debug` failed at 22:20:26.571276 after 4.45 seconds
+[0m22:20:26.571276 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A60C86300>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A65C74770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A65B88F20>]}
+[0m22:20:26.571276 [debug] [MainThread]: Flushing usage events
+[0m22:20:27.269878 [debug] [MainThread]: An error was encountered while trying to flush usage events

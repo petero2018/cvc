@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "cvc"
+version = "0.1.0"
+description = "take home exercise"
+authors = ["oszikj <osztodipeter@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+dbt-core = "^1.10.9"
+dbt-snowflake = "^1.10.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
