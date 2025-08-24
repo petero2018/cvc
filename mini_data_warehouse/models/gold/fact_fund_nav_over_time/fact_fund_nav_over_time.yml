@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fact_fund_nav_over_time
+    description: "A fact table that captures the Net Asset Value (NAV) of funds over time, aggregated on a monthly basis."
+    columns:
+      - name: fund_id
+        description: "The unique identifier for each fund."
+        tests:
+          - not_null
+          - unique
+      - name: nav_date
+        description: "The date representing the month and year for which the NAV is recorded."
+        tests:
+          - not_null
+      - name: nav_value
+        description: "The Net Asset Value (NAV) of the fund for the specified month."
+        tests:
+          - not_null
+      - name: created_at
+        description: "Timestamp indicating when the record was created."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp indicating when the record was last updated."
+        tests:
+          - not_null

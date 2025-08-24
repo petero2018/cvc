@@ -4,7 +4,7 @@ with commits as (
     transaction_date                         as tx_date,        -- already DATE in stg
     try_to_number(transaction_amount)        as amount
   from {{ ref('stg_fund_data') }}
-  where upper(transaction_type) = 'COMMITMENT'
+  where transaction_type = 'COMMITMENT'
 ),
 
 fund_size_latest as (

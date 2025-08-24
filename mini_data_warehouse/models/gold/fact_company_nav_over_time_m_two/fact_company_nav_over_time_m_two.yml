@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: company_nav_over_time_m_two
+    description: "Monthly company NAV over time, version two"
+    columns:
+      - name: company_id
+        description: "The unique identifier for the company"
+        tests:
+          - not_null
+          - unique
+      - name: nav_date
+        description: "The date of the NAV record"
+        tests:
+          - not_null
+      - name: nav_amount
+        description: "The net asset value amount"
+        tests:
+          - not_null
+      - name: currency
+        description: "The currency of the NAV amount"
+        tests:
+          - not_null
+      - name: created_at
+        description: "Timestamp when the record was created"
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp when the record was last updated"
+        tests:
+          - not_null

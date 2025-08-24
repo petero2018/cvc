@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: company_nav_over_time_one
+    description: "A fact table that captures the Net Asset Value (NAV) of companies over time, aggregated on a monthly basis."
+    columns:
+      - name: company_id
+        description: "The unique identifier for each company."
+        tests:
+          - not_null
+          - unique
+      - name: nav_date
+        description: "The date representing the month and year for which the NAV is recorded."
+        tests:
+          - not_null
+      - name: nav_value
+        description: "The Net Asset Value (NAV) of the company for the specified month."
+        tests:
+          - not_null
+      - name: created_at
+        description: "Timestamp indicating when the record was created."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp indicating when the record was last updated."
+        tests:
+          - not_null

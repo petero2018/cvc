@@ -12,7 +12,7 @@ with ranked as (
       -- order by valuation_amount desc           -- or: keep the highest value that day
     ) as rn
   from {{ ref('stg_company_data') }}
-  where transaction_type = 'VALUATION' and company_id is not null
+  where transaction_type = 'VALUATION'
 )
 select
   fund_name,
