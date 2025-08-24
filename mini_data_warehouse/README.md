@@ -118,3 +118,10 @@ Automate these tests in dbt or Snowflake so they run on every pipeline execution
 - Flows on the same day as a valuation  
 - Ownership percentages > 100% due to stale fund size  
 - Duplicate company IDs  
+
+
+
+# Diagram
+
+![Data pipeline diagram](images/dbt-dag.png)
+
