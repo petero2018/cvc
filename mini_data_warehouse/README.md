@@ -48,7 +48,7 @@ unsure how these multiple valuations should be handled.
 SQL solution.
 
 
-* This is essentially the same logic as our fact_fund_nav_over_time model, but restricted to event dates only. *
+* This is essentially the same logic as my fact_fund_nav_over_time model, but restricted to transaction dates only. *
 
 ## Assumptions about data treatment:
 
@@ -63,7 +63,7 @@ SQL solution.
         Flows on the same day as a valuation are excluded from that valuation date and will impact NAV from the following day onwards.
 
     - Report dates
-        The NAV series is reported only on event dates (valuation or flow dates), consistent with the Excel example provided.
+        The NAV series is reported only on transaction dates (valuation or flow dates), consistent with the Excel example provided.
         If a full daily NAV is required, this logic could be applied to a date spine (e.g., dim_date).
 
     - Data parsing and cleansing
@@ -82,9 +82,61 @@ should be scaled down based on CVC's ownership of the fund.
 • It is worth noting that the “fund_size” represents the latest size of the
 fund, and not the fund size at the time of the transaction.
 
+New fact `fact_company_nav_all` added to cater for this requirement:
 
 `fund_ownership_v → computes ownership% per fund as of each date = (cumulative COMMITMENTs up to that date) ÷ latest fund_size.`
 
 `fact_company_nav_over_time_m_one → joins company valuations to fund_ownership_v on the same date and calculates Company NAV = Ownership × Company Valuation.`
 
+## 2.3
+
+Considering only dates where you have both a fund-level NAV and a set of
+company valuations, write an SQL query to calculate the company NAV over
+time using this new scaling method.
+
+`fact_company_nav_over_time_m_two` model
+
+## 2.4
+
+In Method 1 we scale company valuations by our ownership percentage, which comes from commitments divided by the latest fund size. That gives a view of our legal share, but it only produces results on commitment dates and can leave residuals like cash or ‘other assets’. 
+
+In Method 2 we rescale company valuations so they always add up to the fund NAV, which ensures reconciliation on every NAV date. The difference is essentially ownership-driven versus reconciliation-driven: Method 1 is static to commitments, Method 2 is dynamic to reported NAV. 
+
+Both are correct but answer different business questions
+
+Method 1:
+
+answers “what is our legal share of these companies given our commitments?
+
+- NAV is calculated as Company Valuation × (Cumulative Commitments ÷ Latest Fund Size).
+- Produces fewer rows — only where commitment data is available up to the valuation date.
+- NAV can look understated or overstated if the latest fund size is out of sync with historic commitments.
+- Example: “Other Assets” appear in Method 1 with NAV = 5m at full ownership% (100%).
+
+Method 2:
+
+answers “how should we allocate the fund’s NAV across its companies for reporting?”
+
+- NAV is calculated as Company Valuation × (Fund NAV ÷ Sum of Company Valuations).
+- Produces more rows — every date where a fund NAV and company valuations co-exist.
+- Ensures reconciliation: company NAVs always sum back exactly to the fund NAV.
+- Individual company NAVs may differ from Method 1 because the scale factor adjusts for timing gaps, cash, fees, or differences between fund NAV and raw company valuations.
+
+Why they differ (assuming data is correct):
+
+- Timing: fund NAV and company valuations are updated at different times; Method 2 forces them into alignment, Method 1 does not.
+- Scope: Method 1 reflects the legal ownership ratio (commitments ÷ size), while Method 2 reflects an accounting reconciliation (company valuations scaled to fund NAV).
+- Residuals: Method 1 may leave unexplained residuals (cash, other assets), whereas Method 2 redistributes everything across companies.
+
+
+# Task 3
+
+## 3.1
+
+Write dbt tests to identify the following data quality issues:
+
+1. Invalid transaction_date
+2. Missing fund_name, fund_size, transaction_type, transaction_index,
+transaction_date or transaction_amount
+3. Duplicate companies sharing the same company_id
 

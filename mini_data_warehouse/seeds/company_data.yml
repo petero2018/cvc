@@ -1,14 +1,30 @@
 version: 2
 
 seeds:
-    - name: company_data
-      description: Raw company transaction extract.
-      columns:
-        - name: company_id
-          tests: [not_null]
-        - name: transaction_type
-          tests:
-            - accepted_values:
-                values: ['Valuation']     # adjust if company data can include other events
-        - name: transaction_date
-          tests: [not_null]
+  - name: company_data
+    description: Raw company valuation extract.
+    columns:
+      - name: company_id
+        tests: [not_null]
+
+      - name: company_name
+        tests: [not_null]
+
+      - name: transaction_type
+        tests:
+          - accepted_values:
+              values: ['Valuation']  # relax if other types exist
+
+      - name: transaction_date
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "try_to_date(transaction_date, 'DD/MM/YYYY') is not null"
+
+      - name: transaction_amount
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "try_to_number(transaction_amount) is not null"

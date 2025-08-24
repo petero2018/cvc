@@ -1,0 +1,5 @@
+tests:
+  - name: dup_company_names_for_same_id
+    config:
+      severity: warn
+    description: "Warn if there are duplicate company names for the same company_id"

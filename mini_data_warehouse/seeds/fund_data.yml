@@ -6,9 +6,36 @@ seeds:
     columns:
       - name: fund_name
         tests: [not_null]
+
       - name: transaction_type
         tests:
           - accepted_values:
               values: ['Commitment','Valuation','Call','Distribution']
+
       - name: transaction_date
-        tests: [not_null]
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "try_to_date(transaction_date, 'DD/MM/YYYY') is not null"
+
+      - name: fund_size
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "try_to_number(fund_size) is not null"
+
+      - name: transaction_index
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "try_to_number(transaction_index) is not null"
+
+      - name: transaction_amount
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "try_to_number(transaction_amount) is not null"
