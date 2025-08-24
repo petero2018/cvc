@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: fund_ownership
+  - name: fund_ownership_v
     description: |
       This table contains ownership transactions for various funds, including calls and distributions.
       It is designed to help analyze fund ownership patterns and trends over time.

@@ -10,4 +10,3 @@ select
   trim(country::string)                            as country,
   trim(region::string)                             as region
 from {{ source('seeds', 'company_data') }}
-where company_id is not null
