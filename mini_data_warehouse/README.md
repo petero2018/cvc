@@ -140,3 +140,9 @@ Write dbt tests to identify the following data quality issues:
 transaction_date or transaction_amount
 3. Duplicate companies sharing the same company_id
 
+
+**“In addition to the not-nulls and accepted values we already test, I’d also add checks for things like valid date formats, numeric ranges, and reconciling NAVs. For example, we should test that transaction amounts parse correctly as numbers, and that company NAVs in Method 2 actually sum back to the fund NAV.
+
+For monitoring, I’d automate these tests in dbt or Snowflake so they run on every pipeline execution, then surface the results in a dashboard or Slack alert. That way we can track test failures, data freshness, and anomalies like sudden spikes or missing rows over time.
+
+Edge cases I’d specifically watch for are multiple valuations on the same date, flows on the same day as a valuation, ownership percentages going over 100% because of stale fund size, and duplicate company IDs. Those are the kinds of issues that can quietly distort reporting if you don’t test for them.”**
