@@ -55,3 +55,9 @@ If all when well you will be prompted on the screen and you can use dbt as you u
 
 
 The above setup ensures that the environment is portable and runs on all computer.
+
+## Step 4
+
+To execute the datapipeline, navigate to the dbt project folder and run `dbt build` which will run all seeds, models and tests.
+To generate dbt docs, in the same dbt project folder, run `dbt docs generate` and then `dbt docs serve`. 
+This will open up the dbt documentation which will provide a guide about pipelines, data cataloge and diagram.
