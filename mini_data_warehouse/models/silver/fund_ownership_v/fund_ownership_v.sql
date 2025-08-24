@@ -1,14 +1,14 @@
 with commits as (
   select
     fund_name,
-    transaction_date                         as tx_date,        -- already DATE in stg
-    try_to_number(transaction_amount)        as amount
+    transaction_date         as tx_date,        -- already DATE in stg
+    transaction_amount       as amount
   from {{ ref('stg_fund_data') }}
   where upper(transaction_type) = 'COMMITMENT'
 ),
 
 fund_size_latest as (
-  select fund_name, max(try_to_number(fund_size)) as fund_size
+  select fund_name, max(fund_size) as fund_size
   from {{ ref('stg_fund_data') }}
   group by 1
 ),

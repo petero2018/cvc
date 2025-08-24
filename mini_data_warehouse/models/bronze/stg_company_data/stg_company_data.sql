@@ -5,8 +5,10 @@ select
   trim(upper(transaction_type::string))            as transaction_type,
   try_to_number(transaction_index)                 as transaction_index,
   try_to_date(transaction_date, 'DD/MM/YYYY')      as transaction_date,
-  to_number(transaction_amount)                    as transaction_amount,
+  CAST(transaction_amount AS DECIMAL(18,6))        as transaction_amount,
   trim(sector::string)                             as sector,
   trim(country::string)                            as country,
   trim(region::string)                             as region
 from {{ source('seeds', 'company_data') }}
+
+

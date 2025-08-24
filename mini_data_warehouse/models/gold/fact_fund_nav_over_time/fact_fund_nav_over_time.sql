@@ -3,10 +3,10 @@ with valuations_ranked as (
   select
     trim(upper(fund_name)) as fund_name,
     transaction_date,
-    try_to_number(transaction_amount) as transaction_amount,
+    transaction_amount as transaction_amount,
     row_number() over (
       partition by trim(upper(fund_name)), transaction_date
-      order by try_to_number(transaction_amount) desc
+      order by transaction_amount desc
     ) as rn
   from {{ ref('stg_fund_data') }}
   where upper(transaction_type) = 'VALUATION'
@@ -33,8 +33,8 @@ flows as (
     trim(upper(fund_name)) as fund_name,
     transaction_date,
     sum(case
-      when upper(transaction_type) = 'CALL'         then try_to_number(transaction_amount)
-      when upper(transaction_type) = 'DISTRIBUTION' then -try_to_number(transaction_amount)
+      when upper(transaction_type) = 'CALL'         then transaction_amount
+      when upper(transaction_type) = 'DISTRIBUTION' then - transaction_amount
       else 0 end
     ) as cash_flow
   from {{ ref('stg_fund_data') }}

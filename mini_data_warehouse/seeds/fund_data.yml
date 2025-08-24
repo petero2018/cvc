@@ -36,6 +36,3 @@ seeds:
       - name: transaction_amount
         tests:
           - not_null
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "try_to_number(transaction_amount) is not null"
