@@ -1,31 +1,34 @@
 version: 2
 
 models:
-  - name: company_nav_over_time_m_two
-    description: "Monthly company NAV over time, version two"
+  - name: fact_company_nav_over_time_m2
+    description: Company NAV scaled so sum(company NAVs) == fund NAV on the same date.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fund_key, company_key, nav_date_key]
     columns:
-      - name: company_id
-        description: "The unique identifier for the company"
+      - name: fund_key
         tests:
           - not_null
-          - unique
-      - name: nav_date
-        description: "The date of the NAV record"
+          - relationships:
+              to: ref('dim_fund')
+              field: fund_key           # child column (in this model)
+              column_name: fund_key     # parent PK column (in dim_fund)
+      - name: company_key
         tests:
           - not_null
-      - name: nav_amount
-        description: "The net asset value amount"
+          - relationships:
+              to: ref('dim_company')
+              field: company_key
+              column_name: company_key
+      - name: nav_date_key
         tests:
           - not_null
-      - name: currency
-        description: "The currency of the NAV amount"
+          - relationships:
+              to: ref('dim_date')
+              field: nav_date_key
+              column_name: date_key
+      - name: is_current_company
         tests:
-          - not_null
-      - name: created_at
-        description: "Timestamp when the record was created"
-        tests:
-          - not_null
-      - name: updated_at
-        description: "Timestamp when the record was last updated"
-        tests:
-          - not_null
+          - accepted_values:
+              values: [true, false]

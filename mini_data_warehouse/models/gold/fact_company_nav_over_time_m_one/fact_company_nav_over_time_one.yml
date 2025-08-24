@@ -1,0 +1,12 @@
+models:
+  - name: fact_company_nav_over_time_m1
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fund_key, company_key, nav_date_key]
+    columns:
+      - name: fund_key
+        tests: [not_null]
+      - name: company_key
+        tests: [not_null]
+      - name: nav_date_key
+        tests: [not_null]

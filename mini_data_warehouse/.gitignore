@@ -1,5 +1,16 @@
-
+# dbt folders
 target/
 dbt_packages/
 logs/
 dbt_internal_packages/
+
+# dbt individual files
+profiles.yml
+# guardrail to avoid committing misplaced profiles.yml files
+**/profiles.yml
+.user.yml
+# Production manifest file used for dbt's defer functionality
+manifest.json
+
+# Macbook and IDE files and folders
+.DS_Store
