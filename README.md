@@ -36,6 +36,8 @@ mini_data_warehouse:
 
 Please make sure that the profile name `mini_data_warehouse` matches with the `profile` set under the `dbt_profile.yml` file.
 
+---
+
 ## Step 3
 
 - Navigate to the dbt project root foder `cd mini_data_warehouse\`.
