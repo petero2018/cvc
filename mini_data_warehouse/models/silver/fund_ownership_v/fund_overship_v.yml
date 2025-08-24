@@ -1,7 +1,17 @@
 version: 2
 
 models:
-  - name: fund_ownership_v
-    description: |
-      This table contains ownership transactions for various funds, including calls and distributions.
-      It is designed to help analyze fund ownership patterns and trends over time.
+    - name: fund_ownership_v
+      description: As-of ownership % per fund/date = cumulative commitments / latest fund_size.
+      tests:
+        - dbt_utils.unique_combination_of_columns:
+            arguments:
+              combination_of_columns: [fund_name, asof_date]
+      columns:
+        - name: fund_name
+          tests: [not_null]
+        - name: asof_date
+          tests: [not_null]
+        - name: ownership_pct
+          tests:
+            - not_null

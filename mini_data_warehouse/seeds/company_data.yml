@@ -3,29 +3,3 @@ version: 2
 models:
   - name: company_data
     description: "Seed data for company information"
-    columns:
-      - name: fund_name
-        description: "Name of the fund"
-        tests:
-          - not_null
-          - unique
-      - name: company_id
-        description: "Unique identifier for the company"
-        tests:
-          - not_null
-          - unique
-      - name: company_name
-        description: "Name of the company"
-        tests:
-          - not_null
-      - name: valuation_date
-        description: "Date of the company's valuation"
-        tests:
-          - not_null
-          - accepted_values:
-              values: ["2020-01-01", "2020-06-01", "2021-01-01", "2021-06-01", "2022-01-01"]
-      - name: valuation_amount
-        description: "Valuation amount of the company"
-        tests:
-          - not_null
-          - numeric

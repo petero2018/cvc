@@ -2,3 +2,16 @@ version: 2
 
 models:
   - name: fund_events_v
+    description: Canonical fund events with clean types and naming.
+    columns:
+      - name: fund_name
+        tests: [not_null]
+      - name: transaction_date
+        tests: [not_null]
+      - name: transaction_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['COMMITMENT','CALL','DISTRIBUTION','VALUATION']
+      - name: transaction_amount
+        tests: [not_null]
