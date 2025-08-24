@@ -33,17 +33,23 @@ models:
     # Config indicated by + and applies to all files under models/example/
     bronze:
       +materialized: view
-      +schema: FUNDS
+      +schema: RAW
+      +database: "{{ 'bronze_prod' if target.name == 'prod' else 'bronze_dev' }}"
     silver:
       +materialized: view
+      +database: "{{ 'silver_prod' if target.name == 'prod' else 'silver_dev' }}"
+      +schema: ANALYTICS_STAGING
     gold:
       +materialized: table
+      +database: "{{ 'gold_prod' if target.name == 'prod' else 'gold_dev' }}"
+      +schema: ANALYTICS
 
 seeds:
   mini_data_warehouse:
+    +database: "{{ 'bronze_prod' if target.name == 'prod' else 'bronze_dev' }}"
     +schema: SEEDS
-  
-    seed__fund_data:
+
+    fund_data:
       +column_types:
         fund_name: TEXT
         fund_size: NUMBER
@@ -55,7 +61,7 @@ seeds:
         country: TEXT
         region: TEXT
 
-    seed__company_data:
+    company_data:
       +column_types:
         fund_name: TEXT
         company_id: TEXT

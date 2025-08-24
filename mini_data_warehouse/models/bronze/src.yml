@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: seeds
+    database: "{{ 'bronze_prod' if target.name == 'prod' else 'bronze_dev' }}"
+    schema: "SEEDS"
+    tables:
+      - name: company_data
+      - name: fund_data
