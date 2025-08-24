@@ -3,6 +3,7 @@ target/
 dbt_packages/
 logs/
 dbt_internal_packages/
+local_dbt_profiles/
 
 # dbt individual files
 profiles.yml

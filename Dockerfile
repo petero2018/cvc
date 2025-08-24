@@ -1,10 +1,10 @@
 # Set default versions for Python and Poetry (arguments should come before FROM)
 ARG PYTHON_VERSION
 ARG PYTHON_FLAVOUR
-ARG ECR_PUBLIC_REPOSITORY
+ARG DOCKER_REPOSITORY
 
 # Start with a slim Python base image with the dynamic version
-FROM ${ECR_PUBLIC_REPOSITORY}/python:${PYTHON_VERSION}-${PYTHON_FLAVOUR}
+FROM ${DOCKER_REPOSITORY}:${PYTHON_VERSION}-${PYTHON_FLAVOUR}
 LABEL org.opencontainers.image.authors="oszi <osztodipeter@gmail.com>"
 ARG POETRY_VERSION
 # Set environment variables for Poetry and add Poetry to the path
@@ -27,6 +27,8 @@ WORKDIR /app
 
 # Copy Poetry project files and install dependencies
 COPY . .
+
+ENV DBT_PROFILES_DIR=/app/mini_data_warehouse/local_dbt_profiles
 
 # Project initialization:
 RUN poetry install
