@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_company_data 
+    description: "Staging model for company data"
+    columns:
+      - name: fund_name	
+      - name: company_id	
+      - name: company_name	
+      - name: transaction_type	
+      - name: transaction_index	
+      - name: transaction_date	 
+      - name: transaction_amount 
+      - name: sector
+      - name: country	
+      - name: region

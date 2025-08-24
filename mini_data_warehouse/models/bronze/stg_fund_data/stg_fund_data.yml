@@ -6,42 +6,9 @@ models:
       Staging model for raw fund data. Normalizes and documents incoming fund attributes
       from the bronze/raw layer before they are transformed into silver/normalized tables.
     columns:
-      - name: fund_id
-        description: Surrogate or natural identifier for the fund record.
-        tests:
-          - not_null
-          - unique
       - name: fund_name
-        description: Official name of the fund.
-        tests:
-          - not_null
-      - name: fund_code
-        description: Internal fund code assigned by the provider (may be null).
-      - name: isin
-        description: International Securities Identification Number for the fund share class (if available).
-        tests:
-          - unique
-      - name: currency
-        description: Reporting currency for the fund (ISO 4217 code).
-        tests:
-          - not_null
-      - name: launch_date
-        description: Fund launch date (YYYY-MM-DD). Nullable for legacy / unknown records.
-      - name: manager
-        description: Name or identifier of the fund manager or management company.
-      - name: expense_ratio
-        description: Annual expense ratio expressed as a decimal (e.g., 0.01 = 1%).
-      - name: aum
-        description: Assets under management at the time of the record (numeric).
-      - name: status
-        description: Fund status (e.g., active, closed, merged).
-      - name: record_source
-        description: Identifier of the upstream source system / file name.
-        tests:
-          - not_null
-      - name: loaded_at
-        description: Timestamp when the record was loaded into the bronze layer.
-        tests:
-          - not_null
-      - name: updated_at
-        description: Last updated timestamp from the source (nullable).
+      - name: transaction_date
+      - name: transaction_type
+      - name: transaction_amount
+      - name: fund_size_latest
+      - name: transaction_index
