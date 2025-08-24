@@ -61,3 +61,8 @@ The above setup ensures that the environment is portable and runs on all compute
 To execute the datapipeline, navigate to the dbt project folder and run `dbt build` which will run all seeds, models and tests.
 To generate dbt docs, in the same dbt project folder, run `dbt docs generate` and then `dbt docs serve`. 
 This will open up the dbt documentation which will provide a guide about pipelines, data cataloge and diagram.
+
+
+
+
+Please note that I have collated my notes for completing the tasks within the [dbt Readme file](mini_data_warehouse/README.md)
