@@ -1,33 +1,58 @@
 with commits as (
-  select fund_name, transaction_date, try_to_number(transaction_amount) as amount
+  select
+    fund_name,
+    transaction_date                         as tx_date,        -- already DATE in stg
+    try_to_number(transaction_amount)        as amount
   from {{ ref('stg_fund_data') }}
-  where transaction_type = 'COMMITMENT'
+  where upper(transaction_type) = 'COMMITMENT'
 ),
+
 fund_size_latest as (
   select fund_name, max(try_to_number(fund_size)) as fund_size
   from {{ ref('stg_fund_data') }}
   group by 1
 ),
-asof as (
-  select d.date, c.fund_name
-  from commits c
-  join {{ ref('dim_date') }} d
-    on d.date >= (select min(transaction_date) from commits where fund_name = c.fund_name)
+
+-- aggregate commitments by fund+day
+commits_by_day as (
+  select fund_name, tx_date as dt, sum(amount) as amount
+  from commits
   group by 1,2
 ),
+
+-- build a date spine per fund over its active window
+fund_dates as (
+  select
+    f.fund_name,
+    d.date as dt
+  from (select distinct fund_name from {{ ref('stg_fund_data') }}) f
+  join {{ ref('dim_date') }} d
+    on d.date between
+       (select coalesce(min(tx_date), current_date) from commits c where c.fund_name = f.fund_name)
+       and
+       (select coalesce(max(tx_date), current_date) from commits c where c.fund_name = f.fund_name)
+),
+
+-- cumulative commitments per fund over time
 cum as (
   select
-    a.fund_name,
-    a.date as asof_date,
-    sum(case when c.transaction_date <= a.date then c.amount else 0 end) as cum_commit
-  from asof a
-  left join commits c
-    on c.fund_name = a.fund_name
-  group by 1,2
+    fd.fund_name,
+    fd.dt as asof_date,
+    sum(coalesce(cbd.amount, 0)) over (
+      partition by fd.fund_name
+      order by fd.dt
+      rows between unbounded preceding and current row
+    ) as cum_commit
+  from fund_dates fd
+  left join commits_by_day cbd
+    on cbd.fund_name = fd.fund_name
+   and cbd.dt       = fd.dt
 )
+
 select
   c.fund_name,
   c.asof_date,
-  c.cum_commit / nullif(f.fund_size,0) as ownership_pct
+  c.cum_commit / nullif(f.fund_size, 0) as ownership_pct
 from cum c
-join fund_size_latest f using (fund_name)
+join fund_size_latest f
+  on f.fund_name = c.fund_name
