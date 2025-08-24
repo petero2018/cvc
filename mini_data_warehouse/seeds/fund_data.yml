@@ -1,5 +1,14 @@
 version: 2
 
-models:
+seeds:
   - name: fund_data
-    description: "Seed data for funds"
+    description: Raw fund transaction extract.
+    columns:
+      - name: fund_name
+        tests: [not_null]
+      - name: transaction_type
+        tests:
+          - accepted_values:
+              values: ['Commitment','Valuation','Call','Distribution']
+      - name: transaction_date
+        tests: [not_null]

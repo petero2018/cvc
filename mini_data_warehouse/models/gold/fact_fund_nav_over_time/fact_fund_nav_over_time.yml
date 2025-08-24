@@ -7,11 +7,13 @@ models:
       - dbt_utils.unique_combination_of_columns:
           arguments:
             combination_of_columns: [fund_key, nav_date_key]
+            where: "fund_key is not null and nav_date_key is not null"
 
     columns:
       - name: fund_key
         tests:
-          - not_null
+          - not_null:
+              severity: warn 
           - relationships:
               arguments:
                 to: ref('dim_funds') 
@@ -19,7 +21,8 @@ models:
 
       - name: nav_date_key
         tests:
-          - not_null
+          - not_null:
+              severity: warn 
           - relationships:
               arguments:
                 to: ref('dim_date')

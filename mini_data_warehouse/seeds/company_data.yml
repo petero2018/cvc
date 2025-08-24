@@ -1,5 +1,14 @@
 version: 2
 
-models:
-  - name: company_data
-    description: "Seed data for company information"
+seeds:
+    - name: company_data
+      description: Raw company transaction extract.
+      columns:
+        - name: company_id
+          tests: [not_null]
+        - name: transaction_type
+          tests:
+            - accepted_values:
+                values: ['Valuation']     # adjust if company data can include other events
+        - name: transaction_date
+          tests: [not_null]
