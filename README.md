@@ -47,7 +47,7 @@ Please make sure that the profile name `mini_data_warehouse` matches with the `p
 The package manager is poetry within the container.
 You have two option to run dbt from within the container:
 1) you run `poetry run dbt debug`
-2) you run `potery shell` which provisions a virtual environment and then run `dbt debug`
+2) you run `poetry shell` which provisions a virtual environment and then run `dbt debug`
 
 `dbt debug` will run a test connection which will ensure you have the correct setup up and running.
 
