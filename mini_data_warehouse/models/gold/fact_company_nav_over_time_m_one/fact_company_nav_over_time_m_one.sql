@@ -5,15 +5,17 @@ with cov as (
     company_name,
     valuation_date,
     valuation_amount
-  from {{ ref('company_valuations_v') }}     -- already 1 row / fund,company,valuation_date
+  from {{ ref('company_valuations_v') }}
 ),
+
 own as (
   select
     trim(upper(fund_name))   as fund_name,
     asof_date,
-    ownership_pct
+    least(ownership_pct, 1.0) as ownership_pct  -- cap here (optional)
   from {{ ref('fund_ownership_v') }}
 ),
+
 base as (
   select
     c.fund_name,
@@ -28,6 +30,7 @@ base as (
     on o.fund_name = c.fund_name
    and o.asof_date = c.valuation_date
 ),
+
 lkp as (
   select
     b.*,
@@ -35,25 +38,22 @@ lkp as (
     dc.company_key,
     dd.date_key as nav_date_key
   from base b
-  left join {{ ref('dim_funds') }}    df on df.fund_name  = b.fund_name
+  left join {{ ref('dim_funds') }}   df on df.fund_name  = b.fund_name
   left join {{ ref('dim_company') }} dc on dc.company_id = b.company_id
   left join {{ ref('dim_date') }}    dd on dd.date       = b.nav_date
 ),
+
 final as (
   select
     coalesce(fund_key,    '_UNKNOWN') as fund_key,
     coalesce(company_key, '_UNKNOWN') as company_key,
     coalesce(nav_date_key,'_UNKNOWN') as nav_date_key,
-    -- keep naturals for audit if desired
-    fund_name,
-    company_id,
-    company_name,
-    nav_date,
-    ownership_pct,
-    valuation_amount,
-    company_nav
+    -- naturals for audit
+    fund_name, company_id, company_name, nav_date,
+    ownership_pct, valuation_amount, company_nav
   from lkp
 ),
+
 with_current as (
   select
     f.*,
@@ -61,4 +61,6 @@ with_current as (
          then true else false end as is_current_company
   from final f
 )
+
 select * from with_current
+order by fund_name, company_name, nav_date

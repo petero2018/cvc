@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: dim_funds
+    description: Fund dimension (latest attributes) with '_UNKNOWN' sentinel row.
+    columns:
+      - name: fund_key
+        tests: [not_null, unique]
+      - name: fund_name
+        tests: [not_null, unique]

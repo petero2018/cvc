@@ -1,33 +1,34 @@
 version: 2
 
 models:
-  - name: fact_company_nav_over_time_m2
-    description: Company NAV scaled so sum(company NAVs) == fund NAV on the same date.
+  - name: fact_company_nav_over_time_m_two
+    description: Method 2 — company NAV scaled so sum(company NAVs) equals fund NAV on each date.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns: [fund_key, company_key, nav_date_key]
+          arguments:
+            combination_of_columns: [fund_key, company_key, nav_date_key]
     columns:
       - name: fund_key
         tests:
           - not_null
           - relationships:
-              to: ref('dim_fund')
-              field: fund_key           # child column (in this model)
-              column_name: fund_key     # parent PK column (in dim_fund)
+              arguments:
+                to: ref('dim_funds')
+                field: fund_key
       - name: company_key
         tests:
           - not_null
           - relationships:
-              to: ref('dim_company')
-              field: company_key
-              column_name: company_key
+              arguments:
+                to: ref('dim_company')
+                field: company_key
       - name: nav_date_key
         tests:
           - not_null
           - relationships:
-              to: ref('dim_date')
-              field: nav_date_key
-              column_name: date_key
+              arguments:
+                to: ref('dim_date')
+                field: date_key
       - name: is_current_company
         tests:
           - accepted_values:
