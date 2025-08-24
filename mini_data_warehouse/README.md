@@ -23,7 +23,7 @@ Because the extract is event-oriented, it is not an ideal single source for buil
 ## 1.4 End-to-end pipeline
 Transaction-related event data could be streamed into Snowflake and, based upon the latency requirements, it’s either:
 - dbt-transformed to look up the reference data, or  
-- Spark-transformed on the fly to supply near real-time enriched dataset.  
+- Spark-transformed (e.g. Snowpark) on the fly to supply near real-time enriched dataset.  
 
 This works only if IDs can be supplied with the event records and those IDs can be looked up from another system that is integrated into Snowflake.
 
