@@ -45,7 +45,7 @@ base as (
     c.valuation_date as nav_date,
     c.valuation_amount,
     s.scale_to_fund,
-    c.valuation_amount * s.scale_to_fund as company_nav
+    CAST((c.valuation_amount * s.scale_to_fund)  AS DECIMAL(18,2)) as company_nav
   from cov c
   join scale s
     on s.fund_name      = c.fund_name

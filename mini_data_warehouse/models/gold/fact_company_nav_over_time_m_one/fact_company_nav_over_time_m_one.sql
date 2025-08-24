@@ -24,7 +24,7 @@ base as (
     c.valuation_date as nav_date,
     c.valuation_amount,
     o.ownership_pct,
-    c.valuation_amount * o.ownership_pct as company_nav
+    CAST(c.valuation_amount * o.ownership_pct AS DECIMAL(18,2)) as company_nav
   from cov c
   join own o
     on o.fund_name = c.fund_name

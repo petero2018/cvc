@@ -17,7 +17,7 @@ with base as (
 m1 as (
   select
     b.*,
-    b.valuation_amount * b.ownership_pct as company_nav_m1
+    CAST((b.valuation_amount * b.ownership_pct)  AS DECIMAL(18,2)) as company_nav_m1
   from base b
 ),
 
@@ -58,7 +58,7 @@ m2 as (
   select
     m1.*,
     s.scale_to_fund,
-    m1.valuation_amount * s.scale_to_fund as company_nav_m2
+    CAST(m1.valuation_amount * s.scale_to_fund AS DECIMAL(18,2)) as company_nav_m2
   from m1
   left join scale s
     on s.fund_name = m1.fund_name
