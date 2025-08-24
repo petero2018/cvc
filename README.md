@@ -1,2 +1,55 @@
-# cvc
-take home exercise
+# CVC  
+Take-Home Exercise
+
+---
+
+# Local Setup Guide
+
+## Step 1 – Install Docker
+Install Docker if it's not yet available on your computer:  
+👉 [Get Started with Docker](https://www.docker.com/get-started/)
+
+---
+
+## Step 2 – Configure dbt Profile 
+
+Under the following location `\mini_data_warehouse\local_dbt_profiles\profiles.yml` please configure your dbt profile.
+⚠️ Note: this location is **not** part of version control.  
+
+Sample profile:
+
+```
+mini_data_warehouse:
+  target: prod
+  outputs:
+    prod:
+      account: <your snowflake account here>
+      database: <your default database here>
+      password: <your user password here>
+      role: <your dbt default role here>
+      schema: <your default schema here>
+      threads: 3
+      type: snowflake
+      user: <your dbt user here>
+      warehouse: <your default warehouse here>
+```
+
+Please make sure that the profile name `mini_data_warehouse` matches with the `profile` set under the `dbt_profile.yml` file.
+
+## Step 3
+
+- Navigate to the dbt project root foder `cd mini_data_warehouse\`.
+- Run `make build`. This will build your docker image, install all dependancies, and configure a dbt environment.
+- Run `make login`. This will open an interactive shell pointing to the dbt project.
+
+The package manager is poetry within the container.
+You have two option to run dbt from within the container:
+1) you run `poetry run dbt debug`
+2) you run `potery shell` which provisions a virtual environment and then run `dbt debug`
+
+`dbt debug` will run a test connection which will ensure you have the correct setup up and running.
+
+If all when well you will be prompted on the screen and you can use dbt as you usually do from your computer.
+
+
+The above setup ensures that the environment is portable and runs on all computer.
