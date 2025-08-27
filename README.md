@@ -36,6 +36,13 @@ mini_data_warehouse:
 
 Please make sure that the profile name `mini_data_warehouse` matches with the `profile` set under the `dbt_profile.yml` file.
 
+Also, if you want this to try on a Snowflake account you either need to have an account already signed up or sign up for free trial. 
+
+In case you don't want to deal with RBAC and security setup just test it with SYSADMIN I'd reccommend to set the default role to SYSADMIN 
+and treat your environment temporary which can be teared down including transformed data.
+
+Alternatively, I have another repository to provision custome roles and privileges [here](https://github.com/petero2018/TerraformSnowflake)
+which can be utilised for RBAC and set least privileges.
 ---
 
 ## Step 3
