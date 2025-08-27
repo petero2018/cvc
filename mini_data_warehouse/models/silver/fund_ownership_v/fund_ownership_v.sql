@@ -13,12 +13,22 @@ fund_size_latest as (
   group by 1
 ),
 
+/*
+Picks the latest size per fund (per requirement: “fund_size represents the latest size of the fund, not the size at transaction time”).
+*/
+
 -- aggregate commitments by fund+day
 commits_by_day as (
   select fund_name, tx_date as dt, sum(amount) as amount
   from commits
   group by 1,2
 ),
+
+/*
+Aggregates multiple COMMITMENT rows on the same day:
+1 row per (fund_name, date) with sum(amount).
+*/
+
 
 -- build a date spine per fund over its active window
 fund_dates as (
@@ -48,6 +58,8 @@ cum as (
     on cbd.fund_name = fd.fund_name
    and cbd.dt       = fd.dt
 )
+
+-- ownership_pct  calculation
 
 select
   c.fund_name,

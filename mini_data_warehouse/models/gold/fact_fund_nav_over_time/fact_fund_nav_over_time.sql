@@ -6,7 +6,7 @@ with valuations_ranked as (
     transaction_amount as transaction_amount,
     row_number() over (
       partition by trim(upper(fund_name)), transaction_date
-      order by transaction_amount desc
+      order by transaction_amount desc -- assumed to deduplicate on this field
     ) as rn
   from {{ ref('stg_fund_data') }}
   where upper(transaction_type) = 'VALUATION'
@@ -17,6 +17,13 @@ valuations as (
   qualify rn = 1
 ),
 
+/*
+I assign row_number() per (fund, date), ordering by valuation amount DESC.
+Assumption: if there are multiple valuations the same day, the highest is the one to keep (this avoids understating NAV).
+(If the business later says “use latest by transaction_index”, I’d change the ORDER BY to that field.)
+*/
+
+
 -- 2) Window from each valuation to (but not including) the next valuation
 valuations_with_next as (
   select
@@ -26,6 +33,11 @@ valuations_with_next as (
     lead(transaction_date) over (partition by fund_name order by transaction_date) as next_transaction_date
   from valuations
 ),
+
+/*
+For each fund, I find the next valuation date (lead).
+This lets me say: from this valuation date (inclusive) up to but not including the next one, NAV rolls forward from this valuation with flows.
+*/
 
 -- 3) Daily cash flows (+ for CALL, - for DISTRIBUTION)
 flows as (
@@ -41,6 +53,11 @@ flows as (
   where upper(transaction_type) in ('CALL','DISTRIBUTION')
   group by 1,2
 ),
+
+
+/*
+I reduce all events to a net flow per fund per day.
+*/
 
 -- 4) Dense daily NAV series per fund using dim_date
 nav_points as (
@@ -73,6 +90,20 @@ nav_points as (
     on f.fund_name = v.fund_name
    and f.transaction_date = d.date
 ),
+
+
+/*
+
+For each valuation window, I join a dim_date spine to get every day from the valuation date up to (but not including) the next valuation date.
+I left join daily flows on those dates.
+
+The windowed sum(f.cash_flow) cumulates flows from the anchor valuation date forward (by fund & anchor date), and adds them to the valuation amount → daily NAV.
+
+Assumption about same-day flows: Because I include d.date >= v.transaction_date on the spine but only join flows where f.transaction_date = d.date, flows on the valuation date will be included on/after that date in the cumulative sum.
+If the policy is to exclude same-day flows from the valuation day, I would start the date spine at v.transaction_date + 1 or change the flow window to (valuation_date, report_date]. 
+
+*/
+
 
 -- 5) Look up dimension keys (text hash keys with '_UNKNOWN' sentinel)
 lkp as (

@@ -16,6 +16,7 @@ fund_nav as (
   from {{ ref('fact_fund_nav_over_time') }}
 ),
 
+--Aggregates company valuations to sum(company valuations) per (fund, date)
 totals as (
   select
     fund_name,
@@ -25,6 +26,7 @@ totals as (
   group by 1,2
 ),
 
+--Computes the date-level scaling facto
 scale as (
   select
     t.fund_name,
@@ -37,6 +39,7 @@ scale as (
    and f.nav_date  = t.valuation_date
 ),
 
+--Applies the scale to each company valuation on that date:
 base as (
   select
     c.fund_name,

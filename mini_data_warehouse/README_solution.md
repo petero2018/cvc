@@ -72,8 +72,8 @@ Considering only dates where you have both a fund-level NAV and a set of company
 `fact_company_nav_over_time_m_two` model
 
 ## 2.4 Method comparison
-In **Method 1**, we scale company valuations by our ownership percentage (commitments ÷ latest fund size).  
-In **Method 2**, we rescale company valuations so they always add up to the fund NAV.
+In **Method 1**, scale company valuations by our ownership percentage (commitments ÷ latest fund size).  
+In **Method 2**, rescale company valuations so they always add up to the fund NAV.
 
 **Method 1:**
 - Answers: *“What is our legal share of these companies given our commitments?”*  
@@ -106,9 +106,10 @@ Write dbt tests to identify the following data quality issues:
 3. Duplicate companies sharing the same `company_id`  
 
 **Suggested approach:**  
-In addition to the not-nulls and accepted values we already test, add checks for valid date formats, numeric ranges, and reconciling NAVs. For example:
+In addition to the not-nulls and accepted values we already test, we can add checks for valid date formats, numeric ranges, and reconciling NAVs. For example:
 - Test that transaction amounts parse correctly as numbers.
 - Test that company NAVs in Method 2 actually sum back to the fund NAV.
+
 
 **Monitoring:**  
 Automate these tests in dbt or Snowflake so they run on every pipeline execution, then surface results in a dashboard or Slack alert. This allows tracking of test failures, data freshness, and anomalies (e.g., sudden spikes or missing rows).

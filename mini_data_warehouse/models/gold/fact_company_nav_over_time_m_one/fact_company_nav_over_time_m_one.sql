@@ -12,10 +12,11 @@ own as (
   select
     trim(upper(fund_name))   as fund_name,
     asof_date,
-    least(ownership_pct, 1.0) as ownership_pct  -- cap here (optional)
+    least(ownership_pct, 1.0) as ownership_pct  -- cap here (optional), to avoid more than 100%
   from {{ ref('fund_ownership_v') }}
 ),
 
+-- Joins company valuation to ownership on the same date
 base as (
   select
     c.fund_name,
@@ -31,6 +32,7 @@ base as (
    and o.asof_date = c.valuation_date
 ),
 
+-- Adds dimension keys
 lkp as (
   select
     b.*,
@@ -54,6 +56,7 @@ final as (
   from lkp
 ),
 
+-- Adds current flag
 with_current as (
   select
     f.*,
