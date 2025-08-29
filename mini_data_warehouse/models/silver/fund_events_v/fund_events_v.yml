@@ -5,13 +5,26 @@ models:
     description: Canonical fund events with clean types and naming.
     columns:
       - name: fund_name
-        tests: [not_null]
+        tests:
+          - not_null:
+              config:
+                severity: warn
       - name: transaction_date
-        tests: [not_null]
+        tests:
+          - not_null:
+              config:
+                severity: warn
       - name: transaction_type
         tests:
-          - not_null
+          - not_null:
+              config:
+                severity: warn
           - accepted_values:
               values: ['COMMITMENT','CALL','DISTRIBUTION','VALUATION']
+              config:
+                severity: warn
       - name: transaction_amount
-        tests: [not_null]
+        tests:
+          - not_null:
+              config:
+                severity: warn

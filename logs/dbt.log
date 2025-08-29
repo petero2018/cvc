@@ -211,3 +211,23 @@ Runtime Error
 [0m14:35:37.380115 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A94630A5D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A948C71430>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A948498A40>]}
 [0m14:35:37.380115 [debug] [MainThread]: Flushing usage events
 [0m14:35:38.056944 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:52:53.249114 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ABB3D3E090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ABB4098DA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ABB1BA3AA0>]}
+
+
+============================== 10:52:53.261989 | 597e4d95-af74-4b11-9e7b-16fc8a373f40 ==============================
+[0m10:52:53.261989 [info ] [MainThread]: Running with dbt=1.10.9
+[0m10:52:53.261989 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'profiles_dir': 'C:\\Users\\oszto\\.dbt', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'version_check': 'True', 'invocation_command': 'dbt debug', 'log_format': 'default', 'warn_error': 'None', 'introspect': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'no_print': 'None', 'empty': 'None', 'log_cache_events': 'False', 'use_experimental_parser': 'False', 'quiet': 'False', 'log_path': 'logs', 'indirect_selection': 'eager', 'write_json': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m10:52:53.285699 [info ] [MainThread]: dbt version: 1.10.9
+[0m10:52:53.285699 [info ] [MainThread]: python version: 3.12.0
+[0m10:52:53.285699 [info ] [MainThread]: python path: C:\Users\oszto\AppData\Local\pypoetry\Cache\virtualenvs\cvc-GXMGQpjH-py3.12\Scripts\python.exe
+[0m10:52:53.285699 [info ] [MainThread]: os info: Windows-11-10.0.26100-SP0
+[0m10:52:54.014461 [info ] [MainThread]: Using profiles dir at C:\Users\oszto\.dbt
+[0m10:52:54.014461 [info ] [MainThread]: Using profiles.yml file at C:\Users\oszto\.dbt\profiles.yml
+[0m10:52:54.014461 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\oszto\PycharmProjects\cvc\dbt_project.yml
+[0m10:52:54.014461 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m10:52:54.014461 [debug] [MainThread]: Command `dbt debug` failed at 10:52:54.014461 after 0.88 seconds
+[0m10:52:54.014461 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ABB43B4D70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ABB5F47500>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ABB617DBB0>]}
+[0m10:52:54.014461 [debug] [MainThread]: Flushing usage events
+[0m10:52:54.752194 [debug] [MainThread]: An error was encountered while trying to flush usage events

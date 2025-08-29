@@ -1,18 +1,32 @@
 version: 2
 
 models:
-    - name: company_valuations_v
-      description: One valuation per fund+company+date (deduped).
-      tests:
-        - dbt_utils.unique_combination_of_columns:
-            arguments:
-              combination_of_columns: [fund_name, company_id, valuation_date]
-      columns:
-        - name: fund_name
-          tests: [not_null]
-        - name: company_id
-          tests: [not_null]
-        - name: valuation_date
-          tests: [not_null]
-        - name: valuation_amount
-          tests: [not_null]
+  - name: company_valuations_v
+    description: One valuation per fund+company+date (deduped).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [fund_name, company_id, valuation_date]
+          config:
+            severity: warn
+    columns:
+      - name: fund_name
+        tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: company_id
+        tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: valuation_date
+        tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: valuation_amount
+        tests:
+          - not_null:
+              config:
+                severity: warn

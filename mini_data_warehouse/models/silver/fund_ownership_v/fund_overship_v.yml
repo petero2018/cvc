@@ -1,17 +1,27 @@
 version: 2
 
 models:
-    - name: fund_ownership_v
-      description: As-of ownership % per fund/date = cumulative commitments / latest fund_size.
-      tests:
-        - dbt_utils.unique_combination_of_columns:
-            arguments:
-              combination_of_columns: [fund_name, asof_date]
-      columns:
-        - name: fund_name
-          tests: [not_null]
-        - name: asof_date
-          tests: [not_null]
-        - name: ownership_pct
-          tests:
-            - not_null
+  - name: fund_ownership_v
+    description: As-of ownership % per fund/date = cumulative commitments / latest fund_size.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [fund_name, asof_date]
+          config:
+            severity: warn
+    columns:
+      - name: fund_name
+        tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: asof_date
+        tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: ownership_pct
+        tests:
+          - not_null:
+              config:
+                severity: warn

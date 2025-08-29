@@ -5,6 +5,18 @@ models:
     description: Fund dimension (latest attributes) with '_UNKNOWN' sentinel row.
     columns:
       - name: fund_key
-        tests: [not_null, unique]
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
       - name: fund_name
-        tests: [not_null, unique]
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn

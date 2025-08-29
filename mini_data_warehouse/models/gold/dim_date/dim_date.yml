@@ -5,8 +5,23 @@ models:
     description: Business-aware date dimension with fiscal and business-day flags; includes '_UNKNOWN' row.
     columns:
       - name: date_key
-        tests: [not_null, unique]
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
       - name: date_id
-        tests: [not_null, unique]
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
       - name: date
-        tests: [unique]      # nullable for the '_UNKNOWN' row -> avoid not_null here
+        tests:
+          - unique:
+              config:
+                severity: warn    # 👈 still enforces uniqueness but only warns

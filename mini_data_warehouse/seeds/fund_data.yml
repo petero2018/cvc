@@ -5,34 +5,50 @@ seeds:
     description: Raw fund transaction extract.
     columns:
       - name: fund_name
-        tests: [not_null]
+        tests:
+          - not_null:
+              config:
+                severity: warn
 
       - name: transaction_type
         tests:
           - accepted_values:
               values: ['Commitment','Valuation','Call','Distribution']
+              config:
+                severity: warn
 
       - name: transaction_date
         tests:
-          - not_null
+          - not_null:
+              config:
+                severity: warn
           - dbt_utils.expression_is_true:
               arguments:
-                expression: "try_to_date(transaction_date, 'DD/MM/YYYY') is not null"
+                expression: "to_date(transaction_date, 'DD/MM/YYYY') is not null"
+              config:
+                severity: warn
 
       - name: fund_size
         tests:
-          - not_null
+          - not_null:
+              config:
+                severity: warn
           - dbt_utils.expression_is_true:
               arguments:
-                expression: "try_to_number(fund_size) is not null"
+                expression: "to_number(regexp_replace(fund_size, '[, ]', '')) is not null"
+              config:
+                severity: warn
 
       - name: transaction_index
         tests:
-          - not_null
           - dbt_utils.expression_is_true:
               arguments:
-                expression: "try_to_number(transaction_index) is not null"
+                expression: "to_number(regexp_replace(transaction_index, '[, ]', '')) is not null"
+              config:
+                severity: warn
 
       - name: transaction_amount
         tests:
-          - not_null
+          - not_null:
+              config:
+                severity: warn

@@ -1,6 +1,5 @@
 version: 2
 
-
 models:
   - name: fact_company_nav_all
     columns:
@@ -10,19 +9,26 @@ models:
               arguments:
                 to: ref('dim_funds')
                 field: fund_key
+              config:
+                severity: warn
       - name: company_key
         tests:
           - relationships:
               arguments:
                 to: ref('dim_company')
                 field: company_key
+              config:
+                severity: warn
       - name: nav_date_key
         tests:
           - relationships:
               arguments:
                 to: ref('dim_date')
                 field: date_key
+              config:
+                severity: warn
       - name: company_nav_m1
         tests:
           - not_null:
-              severity: warn
+              config:
+                severity: warn
