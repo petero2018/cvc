@@ -6,7 +6,7 @@ with valuations_ranked as (
     transaction_amount as transaction_amount,
     row_number() over (
       partition by trim(upper(fund_name)), transaction_date
-      order by transaction_amount desc -- assumed to deduplicate on this field
+      order by transaction_index desc -- assumed to deduplicate on this field
     ) as rn
   from {{ ref('stg_fund_data') }}
   where upper(transaction_type) = 'VALUATION'
@@ -46,7 +46,7 @@ flows as (
     transaction_date,
     sum(case
       when upper(transaction_type) = 'CALL'         then transaction_amount
-      when upper(transaction_type) = 'DISTRIBUTION' then - transaction_amount
+      when upper(transaction_type) = 'DISTRIBUTION' then transaction_amount
       else 0 end
     ) as cash_flow
   from {{ ref('stg_fund_data') }}
@@ -130,8 +130,9 @@ with_current as (
       else false
     end as is_current
   from lkp l
-)
+),
 
+final as (
 -- Final select (keep naturals for audit; facts use only keys downstream)
 select
   fund_key,
@@ -146,3 +147,8 @@ select
   is_current
 from with_current
 order by fund_name, nav_date
+)
+
+select fund_name, min(nav_date) as nav_date, valuation_date_anchor, nav 
+from final 
+group by all order by fund_name, nav_date asc

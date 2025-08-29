@@ -29,7 +29,7 @@ base as (
   from cov c
   join own o
     on o.fund_name = c.fund_name
-   and o.asof_date = c.valuation_date
+   and o.asof_date <= c.valuation_date
 ),
 
 -- Adds dimension keys
