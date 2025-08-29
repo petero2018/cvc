@@ -65,5 +65,6 @@ with_current as (
   from final f
 )
 
-select * from with_current
+select * 
+from with_current
 order by fund_name, company_name, nav_date

@@ -149,6 +149,14 @@ from with_current
 order by fund_name, nav_date
 )
 
-select fund_name, min(nav_date) as nav_date, valuation_date_anchor, nav 
+select 
+  fund_key,
+  min(nav_date_key) as nav_date_key,
+  min(valuation_date_anchor_key) as valuation_date_anchor_key,
+  fund_name, -- this can be removed as dim_funds joins
+  min(nav_date) as nav_date, 
+  valuation_date_anchor, -- this can be removed as dim_date joins
+  nav 
 from final 
-group by all order by fund_name, nav_date asc
+group by all 
+order by fund_name, nav_date asc
